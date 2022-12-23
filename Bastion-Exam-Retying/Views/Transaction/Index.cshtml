@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <div class="transaction">
+        <form id="transactionForm" method="post" action="Transaction/Validate">
+            <div class="form-group">
+                <label for="cardNum">Card Number</label>
+                <input id="cardNum" name="cardNum" value="" type="text" placeholder="xxxx-xxxx-xxxx-xxxx" maxlength="16" required />
+            </div>
+            <div class="form-group">
+                <label for="cardName">Card Holder Name</label>
+                <input id="cardName" name="cardName" value="" type="text" placeholder="" />
+            </div>
+            <div class="form-group">
+                <label for="cardCvv">CVV</label>
+                <input id="cardCvv" name="cardCvv" value="" type="text" placeholder="xxx" maxlength="3" required />
+            </div>
+            <div class="form-group">
+                <label for="cardExpiry">Card Expiry Date</label>
+                <input id="cardExpiry" name="cardExpiry" value="" type="text" maxlength="6" required />
+            </div>
+            <div class="form-group">
+                <label for="productAmount">Product Amount</label>
+                <input id="productAmount" name="productAmount" value="1500" type="text" placeholder="" required />
+            </div>
+            <input type="submit" />
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        //document.querySelector('#transactionForm').addEventListener('submit', e => {
+        //    let card_number = document.querySelector('#cardNum').value;
+        //    let card_name = document.querySelector('#cardName').value;
+        //    let card_cvv = document.querySelector('#cardCvv').value;
+        //    let card_expiry = document.querySelector('#cardExpiry').value;
+        //    let card_details = [];
+        //    card_details.push({ card_number, card_name, card_cvv, card_expiry });
+        //    console.log(card_details);
+
+        //    e.preventDefault();
+        //})
+    </script>
+}

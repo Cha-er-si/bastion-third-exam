@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Bastion_Exam_Retying.Models.Product
+
+<div>
+    <h1>Dashboard</h1>
+    <div class="product">
+        <h3>Gameboy</h3>
+        <p> @Model.price </p>
+        <button class="buy-btn" onclick="goToTransaction()"> Buy </button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function goToTransaction() {
+        window.location = '/Transaction';
+    }
+</script>

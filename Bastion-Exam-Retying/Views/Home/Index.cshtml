@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<link href="~/Content/Home.css" rel="stylesheet" />
+
+@*<div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>*@
+
+<div class="container">
+    <div class="login-page">
+        <div class="login-image"></div>
+        <div class="login-fields">
+            <form id="form-login" method="get">
+                <div class="form-group">
+                    <label for="userName">Username</label>
+                    <input id="userName" name="userName" type="text" class="form-control" placeholder="Enter Username" required />
+                    @*<h5 id="usercheck" class="text-danger hide">* Username is required</h5>*@
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Enter Password" required />
+                    @*<h5 id="passcheck" class="text-danger hide">* Password is required</h5>*@
+                </div>
+                <input type="button" value="Submit" onclick="login()" />
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            $("#form-login").validate({
+                errorPlacement: function (error, element) {
+                    $(element).parents('.form-group').append(error)
+                },
+                errorClass: "text-danger",
+                rules: {
+                    userName: {
+                        required: true,
+                        minlength: 3
+                    },
+                    password: {
+                        required: true,
+                        minlength: 8
+                    },
+                },
+                messages: {
+                    userName: {
+                        required: "* Username is required",
+                        minlength: "* Username should be at least 3 characters"
+                    },
+                    password: {
+                        required: "* Password is required",
+                        minlength: "* Password should be at least 8 characters"
+                    },
+                }
+            });
+        });
+        function login() {
+            @*@Html.ActionLink("Dashboard", "Index");*@
+            if ($("#userName").hasClass("text-danger") || $("#password").hasClass("text-danger")) {
+                console.log('Error');
+                window.alert('Please resolve all errors.')
+                return;
+            }
+
+            if ($("#userName").val().trim() == "" || $("#password").val().trim() == "") {
+                console.log('Error');
+                window.alert('All fields are required.')
+                return;
+            }
+
+            window.location.href = "/Dashboard/Index"
+        }
+    </script>s
+}
+
